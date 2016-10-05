@@ -1,0 +1,27 @@
+* {
+  font-size: 1.5rem;
+}
+nav.navbar {
+  text-align: center;
+}
+.container > .row {
+  border: 1px solid #000;
+}
+#color {
+  overflow: hidden;
+  border: 1px solid;
+}
+#color > div {
+  height: 2em;
+}
+#board > canvas {
+  border: 1px solid;
+}
+.panel:first-child .panel-heading {
+  background-color: #aaa;
+}
+a {
+  display: block;
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */

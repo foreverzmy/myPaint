@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Paint</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>* {
+  font-size: 1.5rem;
+}
+nav.navbar {
+  text-align: center;
+}
+.container > .row {
+  border: 1px solid #000;
+}
+#color {
+  overflow: hidden;
+  border: 1px solid;
+}
+#color > div {
+  height: 2em;
+}
+#board > canvas {
+  border: 1px solid;
+}
+.panel:first-child .panel-heading {
+  background-color: #aaa;
+}
+a {
+  display: block;
+  width: 100%;
+}
+/*# sourceMappingURL=style.css.map */
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <h2>Hello MyPaint</h2>
+    </nav>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <div class="col-sm-2 col-xs-12">
+            <h2>Tools</h2>
+            <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group">
+              <div class="panel panel-default">
+                <div role="tab" id="headingOne" class="panel-heading">
+                  <h4 class="panel-title"><a id="pencil" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">画笔</a></h4>
+                </div>
+                <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" class="panel-collapse collapse in">
+                  <div id="graphic" class="panel-body">
+                    <button id="line" class="btn btn-default col-xs-3 col-sm-6">直线</button>
+                    <button id="rect" class="btn btn-default col-xs-3 col-sm-6">矩形</button>
+                    <button id="circle" class="btn btn-default col-xs-3 col-sm-6">圆形</button>
+                    <button id="triangle" class="btn btn-default col-xs-3 col-sm-6">三角形</button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div role="tab" id="headingTwo" class="panel-heading">
+                  <h4 class="panel-title"><a id="word" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">文字</a></h4>
+                </div>
+                <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">字号<span class="caret"></span></button>
+                        <ul id="fontsize" class="dropdown-menu">
+                          <li><a id="8px" href="#">8px</a></li>
+                          <li><a id="10px" href="#">10px</a></li>
+                          <li><a id="12px" href="#">12px</a></li>
+                          <li><a id="14px" href="#">14px</a></li>
+                          <li><a id="16px" href="#">16px</a></li>
+                          <li><a id="18px" href="#">18px</a></li>
+                          <li><a id="20px" href="#">20px</a></li>
+                          <li><a id="22px" href="#">22px</a></li>
+                          <li><a id="24px" href="#">24px</a></li>
+                          <li><a id="26px" href="#">26px</a></li>
+                          <li><a id="28px" href="#">28px</a></li>
+                          <li><a id="30px" href="#">30px</a></li>
+                          <li><a id="32px" href="#">32px</a></li>
+                          <li><a id="34px" href="#">34px</a></li>
+                          <li><a id="36px" href="#">36px</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-default dropdown-toggle">字体<span class="caret"></span></button>
+                        <ul id="fontfamily" class="dropdown-menu">
+                          <li><a id="宋体" href="#">宋体</a></li>
+                          <li><a id="微软雅黑" href="#">微软雅黑</a></li>
+                          <li><a id="仿宋" href="#">仿宋</a></li>
+                          <li><a id="Arial" href="#">Arial</a></li>
+                          <li><a id="Consolas" href="#">Consolas</a></li>
+                          <li><a id="Monaco" href="#">Monaco</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <button id="bold" class="btn btn-default col-xs-6 col-md-6">加粗</button>
+                    <button id="italic" class="btn btn-default col-xs-6 col-md-6">斜体</button>
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div role="tab" id="headingThree" class="panel-heading">
+                  <h4 class="panel-title"><a id="eraser" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">橡皮擦</a></h4>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div role="tab" id="headingFour" class="panel-heading">
+                  <h4 class="panel-title"><a id="trash" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="collapsed">清除</a></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <div id="color"></div>
+              </div>
+              <div id="board" class="col-xs-12"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/zz.js"></script>
+  </body>
+</html>
+<div class="col-xs-6 col-sm-12"></div>
